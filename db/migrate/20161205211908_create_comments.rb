@@ -3,8 +3,8 @@ class CreateComments < ActiveRecord::Migration
     create_table :comments do |t|
       t.string :content
       t.integer :votes
-      t.belongs_to :users, index: true
-      t.belongs_to :posts, index: true
+      t.references :users
+      t.references :posts
       t.timestamps
     end
   end

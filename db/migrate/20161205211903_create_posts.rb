@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :body
       t.string :image
       t.integer :votes
-      t.belongs_to :users, index: true
+      t.references :users
       t.timestamps
     end
   end
