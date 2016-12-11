@@ -5,8 +5,7 @@ class PostsController < ApplicationController
     @posts = Posts.joins(:users).select("posts.id, posts.title, posts.body, posts.image, posts.votes, users.username")
     # @posts = Posts.all
     # @comments = Comments.all
-
-
+    
     # puts @comments.inspect
     # @comments.each do |c|
     #   puts c.inspect
