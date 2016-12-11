@@ -9,12 +9,12 @@
 # There has to be a better way to do this....
 
 
-u1 = Users.create(username: 'user1', password: 'password')
-u2 = Users.create(username: 'user2', password: 'password')
-u3 = Users.create(username: 'user3', password: 'password')
-u4 = Users.create(username: 'user4', password: 'password')
-u5 = Users.create(username: 'user5', password: 'password')
-u6 = Users.create(username: 'user6', password: 'password')
+u1 = Users.create(username: 'user1', password_digest: 'password')
+u2 = Users.create(username: 'user2', password_digest: 'password')
+u3 = Users.create(username: 'user3', password_digest: 'password')
+u4 = Users.create(username: 'user4', password_digest: 'password')
+u5 = Users.create(username: 'user5', password_digest: 'password')
+u6 = Users.create(username: 'user6', password_digest: 'password')
 
 
 p1 = Posts.create(title: 'Check this out!', body: 'I made this in Rails!', image: 'http://www.newpeaksolutions.com/wp-content/uploads/2016/04/ruby-on-rails.jpg', votes: 6, users_id: u1.id)

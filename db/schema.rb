@@ -25,9 +25,6 @@ ActiveRecord::Schema.define(version: 20161205211908) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["posts_id"], name: "index_comments_on_posts_id", using: :btree
-  add_index "comments", ["users_id"], name: "index_comments_on_users_id", using: :btree
-
   create_table "posts", force: true do |t|
     t.string   "title"
     t.string   "body"
@@ -38,11 +35,9 @@ ActiveRecord::Schema.define(version: 20161205211908) do
     t.datetime "updated_at"
   end
 
-  add_index "posts", ["users_id"], name: "index_posts_on_users_id", using: :btree
-
   create_table "users", force: true do |t|
     t.string   "username"
-    t.string   "password"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
