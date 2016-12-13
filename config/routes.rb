@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
+  get '/posts/:post_id/comments' => 'comments#show', as: :post
+
 
   # get '/signin' => ''
   # The priority is based upon order of creation: first created -> highest priority.
@@ -62,7 +64,7 @@ Rails.application.routes.draw do
   #   concern :toggleable do
   #     post 'toggle'
   #   end
-  #   resources :posts, concerns: :toggleable
+  #   resources :post, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
 
   # Example resource route within a namespace:

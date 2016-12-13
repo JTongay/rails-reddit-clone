@@ -1,9 +1,9 @@
 
-class Users < ActiveRecord::Base
+class User < ActiveRecord::Base
 
   has_secure_password
 
-  has_many :posts
+  has_many :post
   has_many :comments
   # #
   # def password

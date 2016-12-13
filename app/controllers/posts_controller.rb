@@ -1,29 +1,22 @@
 class PostsController < ApplicationController
+  include SessionsHelper
   def index
-    # @posts = Comments.joins(:users, :posts).select("posts.id, posts.title, posts.body, posts.image, users.username, comments.content")
-    # @posts = Comments.joins(:users, :posts)
-    @posts = Posts.joins(:users).select("posts.id, posts.title, posts.body, posts.image, posts.votes, users.username")
-    # @posts = Posts.all
-    # @comments = Comments.all
-    
-    # puts @comments.inspect
-    # @comments.each do |c|
-    #   puts c.inspect
-    # end
+
+    @posts = Post.all
 
     respond_to do |format|
       format.html
-      format.json {render json: @posts}
+      format.json {render json: @post}
     end
   end
 
   def new
-    @post = Posts.new
+    @post = Post.new
   end
 
   def create
     # @message =
-    @message = Posts.new(post_params)
+    @message = Post.new(post_params)
     puts @post.inspect
   	if @message.save
       redirect_to '/'
@@ -36,7 +29,7 @@ class PostsController < ApplicationController
   private
   def post_params
     allow = [:title, :body, :image]
-    params.require(:posts).permit(allow)
+    params.require(:post).permit(allow)
   end
 
 

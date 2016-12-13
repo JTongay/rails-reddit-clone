@@ -1,11 +1,11 @@
-class CreatePosts < ActiveRecord::Migration
+class CreatePost < ActiveRecord::Migration
   def change
-    create_table :posts do |t|
+    create_table :post do |t|
       t.string :title
       t.string :body
       t.string :image
       t.integer :votes
-      t.references :users
+      t.references :users, index: true, foreign_key: true
       t.timestamps
     end
   end

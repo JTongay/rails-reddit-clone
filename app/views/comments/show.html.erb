@@ -1,0 +1,24 @@
+
+<% @post.each do |p| %>
+<div class="container-fluid">
+  <div class="jumbotron">
+    <img src="<%=p.image %>" alt="" height="200px" width="200px">
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+  </div>
+</div>
+<% end %>
+
+
+  <% if !@comments %>
+
+  <h2>No Comments</h2>
+
+  <% else %>
+
+  <% @comments.each do |c| %>
+    <h2><%=c.content %></h2>
+
+  <% end %>
+
+
+  <% end %>
