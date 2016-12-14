@@ -1,8 +1,7 @@
 <div class="container">
-    <%= debug current_user %>
     <% if logged_in? %>
     <h2>Welcome <%=current_user.username %></h2>
-    <%= link_to "Add Post", "/new" %>
+    <%= link_to "Add Post", new_user_post_path(current_user.id) %>
     <% else %>
     <h2>Log In</h2>
     <%= link_to "Login", login_path(@user) %>

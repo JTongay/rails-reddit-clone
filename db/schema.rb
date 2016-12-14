@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161213201241) do
+ActiveRecord::Schema.define(version: 20161214031407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: true do |t|
     t.string   "content"
-    t.integer  "votes"
+    t.integer  "votes",      default: 1
     t.integer  "user_id"
     t.integer  "post_id"
     t.datetime "created_at"
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20161213201241) do
   create_table "posts", force: true do |t|
     t.string   "title"
     t.string   "body"
-    t.string   "image"
-    t.integer  "votes"
+    t.string   "image",      default: "http://imgc.allpostersimages.com/images/P-473-488-90/75/7595/TW3F300Z/posters/booyah-comic-pop.jpg"
+    t.integer  "votes",      default: 1
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

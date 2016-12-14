@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   include SessionsHelper
   def index
-
+    puts current_user.inspect
     @posts = Post.all
 
     respond_to do |format|
@@ -15,20 +15,23 @@ class PostsController < ApplicationController
   end
 
   def create
-    # @message =
     @message = Post.new(post_params)
-    puts @post.inspect
+    @message.user_id = current_user.id
   	if @message.save
-      redirect_to '/'
+      redirect_to root_path
     else
       render 'new'
     end
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
 
   private
   def post_params
-    allow = [:title, :body, :image]
+    allow = [:title, :body, :image, :user_id]
     params.require(:post).permit(allow)
   end
 

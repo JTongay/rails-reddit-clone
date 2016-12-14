@@ -3,13 +3,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    puts params[:username]
     user = User.find_by_username(params[:session][:username])
-    puts user
     if user && user.authenticate(params[:session][:password])
-      puts "booyah"
       session[:user_id] = user.id
-      redirect_to '/'
+      redirect_to '/posts'
     else
       redirect_to '/login'
     end
@@ -17,7 +14,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to '/'
+    redirect_to '/posts'
   end
 
 end

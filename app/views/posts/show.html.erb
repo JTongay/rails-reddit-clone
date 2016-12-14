@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <div class="jumbotron">
+    <img src="<%=@post.image %>" alt="" height="200px" width="200px">
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+  </div>
+  <% @post.comments.each do |c| %>
+
+  <%=debug c.methods %>
+  <p><%=c.content %></p>
+  <% end %>
+</div>

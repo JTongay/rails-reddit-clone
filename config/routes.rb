@@ -1,13 +1,24 @@
 Rails.application.routes.draw do
 
-  get '/' => 'posts#index'
+  # get '/' => 'posts#index'
+  #
+  # get '/new' => 'posts#new'
+  #
+  # post '/' => 'posts#create'
 
-  get '/new' => 'posts#new'
 
-  post '/' => 'posts#create'
+  resources :users do
+    resources :posts do
+      resources :comments
+    end
+  end
+
+  root :to => 'posts#index'
+
+  resources :posts
 
   get 'signup' => 'users#new'
-  resources :users
+  # resources :users
 
   post 'signup' => 'users#create'
 
@@ -15,7 +26,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
-  get '/posts/:post_id/comments' => 'comments#show', as: :post
+  # get '/posts/:post_id/comments' => 'comments#show', as: :post
 
 
   # get '/signin' => ''
