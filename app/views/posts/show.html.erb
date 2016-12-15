@@ -1,11 +1,22 @@
-<div class="container-fluid">
-  <div class="jumbotron">
-    <img src="<%=@post.image %>" alt="" height="200px" width="200px">
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-  </div>
-  <% @post.comments.each do |c| %>
+  <div class="container">
+    <div class="text-center">
+      <h2>Booyah</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <img src="<%=@post.image %>" alt="" height="200px" width="200px">
+        <h2><%=@post.title %></h2>
+        <h3><%=@post.body %></h3>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <% @post.comments.each do |c| %>
+          <span><%=c.votes %> | <%=c.content %></span>
+          <p>Created By: <%=c.user.username %></p>
+          <% end %>
+        </div>
+      </div>
 
-  <%=debug c.methods %>
-  <p><%=c.content %></p>
-  <% end %>
-</div>
+    </div>
+  </div>

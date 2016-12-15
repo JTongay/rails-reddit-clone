@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="text-center">
+    <h2>Booyah</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <img src="<%=@post.image %>" alt="" height="200px" width="200px">
+      <h2><%=@post.title %></h2>
+      <h3><%=@post.body %></h3>
+      <% if logged_in? %>
+        <%= form_for :comments,url: user_post_comments_path(@post.user.id, @post.id), :method => 'post' do |f|%>
+          <%= f.label :content %>
+          <%= f.text_field :content %>
+          <%= f.submit "Submit" %>
+        <% end %>
+      <% else %>
+        <h3>You must be signed in to make a comment</h3>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <% @post.comments.each do |c| %>
+        <span><%=c.votes %> | <%=c.content %></span>
+        <p>Created By: <%=c.user.username %></p>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

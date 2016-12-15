@@ -1,0 +1,13 @@
+<div class="container">
+  <h1><%=@user.username %></h1>
+  <p>
+    <%=link_to "Delete Account", @user, method: :delete, data: {confirm: "You sure fam?"} %>
+  </p>
+  <% @user.posts.each do |p| %>
+  <p>
+    <%= link_to "#{p.title}", user_post_comments_path(p.user_id, p.id) %>
+  </p>
+  <% end %>
+
+
+</div>
