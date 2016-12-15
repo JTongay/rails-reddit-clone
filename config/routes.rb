@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root :to => 'posts#index'
+  root :to => 'users#new'
 
   resources :posts
 

@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   include SessionsHelper
   def index
-    puts current_user.inspect
     @posts = Post.all
 
     respond_to do |format|

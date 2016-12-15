@@ -20,12 +20,18 @@ class UsersController < ApplicationController
       redirect_to '/signup'
       flash[:notice] = "Try Again Scrub"
     end
-    puts @user.inspect
   end
 
   def destroy
+    @comments = Comment.find_by_user_id(params[:id])
+      if @comments
+        @comments.destroy
+      end
+    @posts = Post.find_by_user_id(params[:id])
+      if @posts
+        @posts.destroy
+      end
     @user = User.find(params[:id]).destroy
-    puts @user
     flash[:message] = "Successfully Deleted Account"
     redirect_to '/signup'
   end
