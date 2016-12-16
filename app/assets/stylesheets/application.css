@@ -13,3 +13,51 @@
  *= require_tree .
  *= require_self
  */
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body>* {
+    flex_shrink: 0;
+}
+
+
+/*sign in page*/
+
+.sign-up {
+    background-color: #7EA8BE;
+}
+
+.about-page {
+    background-color: #F6F0ED;
+    font-family: Lora;
+    flex-grow: 1;
+}
+
+.front-page-nav {
+    background-color: #F6F0ED;
+}
+
+.front-page {
+    background-color: #C2948A;
+}
+
+.cards {
+    background-color: #F6F0ED;
+    max-width: 275px;
+    max-height: 275px;
+}
+
+.preview-images {
+    min-width: 90px;
+    min-height: 90px;
+    max-width: 96px;
+    max-height: 96px;
+}
+
+.edit-page {
+    background-color: #7EA8BE;
+}

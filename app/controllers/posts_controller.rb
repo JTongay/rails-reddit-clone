@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     @message = Post.new(post_params)
     @message.user_id = current_user.id
   	if @message.save
-      redirect_to root_path
+      redirect_to user_posts_path(current_user.id)
     else
       render 'new'
     end
@@ -27,9 +27,33 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(update_params)
+    redirect_to post_path(@post)
+  end
+
+  def destroy
+    @comments = Comment.find_by_post_id(params[:id])
+    if @comments
+      @comments.destroy
+    end
+    @post = Post.find(params[:id]).destroy
+    redirect_to user_posts_path(current_user.id)
+  end
+
 
   private
   def post_params
+    allow = [:title, :body, :image, :user_id]
+    params.require(:post).permit(allow)
+  end
+
+  def update_params
     allow = [:title, :body, :image, :user_id]
     params.require(:post).permit(allow)
   end

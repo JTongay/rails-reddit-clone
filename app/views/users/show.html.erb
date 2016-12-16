@@ -1,13 +1,32 @@
 <div class="container">
-  <h1><%=@user.username %></h1>
-  <p>
-    <%=link_to "Delete Account", @user, method: :delete, data: {confirm: "You sure fam?"} %>
-  </p>
-  <% @user.posts.each do |p| %>
-  <p>
-    <%= link_to "#{p.title}", user_post_comments_path(p.user_id, p.id) %>
-  </p>
-  <% end %>
+    <div class="text-center">
+        <h1><%=@user.username %></h1>
+        <% if current_user.id == @user.id %>
+            <%=link_to "Delete Account", @user, method: :delete, data: {confirm: "This process cannot be undone, are you sure you want to do this?"} %>
+        <% end %>
+        <% @user.posts.in_groups_of(3,false).each do |post| %>
+        <div class="row">
+            <% post.each do |p| %>
+            <div class="col-sm-4 col-md-4">
+                <div class="thumbnail cards">
+                    <img src="<%=p.image %>" alt="" class="img-responsive img-rounded preview-images">
+                    <div class="text-center">
+                        <h4><%=p.title %></h2>
+                        <h5><%=p.body %></h2>
+                        <div class="btn-group" role="group" aria-label="...">
+                          <%= link_to "See Post", user_post_comments_path(p.user.id, p.id), :class => "btn btn-primary"%>
+                          <% if current_user.id == @user.id %>
+                          <%= link_to "Edit Post", edit_user_post_path(p.user.id, p.id), :class => "btn btn-warning"%>
+                          <%= link_to "Delete Post", "/users/#{@user.id}/posts/#{p.id}", method: :delete, :class => "btn btn-danger"%>
+                          <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+        </div>
+        <% end %>
 
+    </div>
 
 </div>
