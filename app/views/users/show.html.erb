@@ -1,8 +1,22 @@
+<div class="user-page">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid front-page-nav">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img alt="Brand" src="http://www.munsif.tv/sites/all/modules/socialmedia/icons/levelten/glossy/32x32/reddit.png" class="img-responsive" height="40px" width="27px">
+        </a>
+        <%= link_to "Back", user_posts_path(current_user.id), :class => "btn btn-default navbar-btn"%>
+      </div>
+    </div>
+  </nav>
 <div class="container">
     <div class="text-center">
         <h1><%=@user.username %></h1>
         <% if current_user.id == @user.id %>
-            <%=link_to "Delete Account", @user, method: :delete, data: {confirm: "This process cannot be undone, are you sure you want to do this?"} %>
+        <div class="btn-group" role="group" aria-label="...">
+            <%=link_to "Delete Account", @user, method: :delete, data: {confirm: "This process cannot be undone, are you sure you want to do this?"}, :class => "btn btn-danger" %>
+            <%=link_to "Edit Account", edit_user_path(@user.id), :class => "btn btn-warning" %>
+        </div>
         <% end %>
         <% @user.posts.in_groups_of(3,false).each do |post| %>
         <div class="row">
@@ -12,7 +26,6 @@
                     <img src="<%=p.image %>" alt="" class="img-responsive img-rounded preview-images">
                     <div class="text-center">
                         <h4><%=p.title %></h2>
-                        <h5><%=p.body %></h2>
                         <div class="btn-group" role="group" aria-label="...">
                           <%= link_to "See Post", user_post_comments_path(p.user.id, p.id), :class => "btn btn-primary"%>
                           <% if current_user.id == @user.id %>
@@ -29,4 +42,5 @@
 
     </div>
 
+</div>
 </div>

@@ -43,7 +43,7 @@ class PostsController < ApplicationController
       @comments.destroy
     end
     @post = Post.find(params[:id]).destroy
-    redirect_to user_posts_path(current_user.id)
+    redirect_to user_path(current_user.id)
   end
 
 

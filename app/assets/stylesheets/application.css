@@ -70,3 +70,28 @@ body>* {
 .edit-page>* {
     flex-shrink: 0;
 }
+
+.user-page {
+    background-color: #BBB193;
+    font-family: Lora, sans-serif;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-page>* {
+    flex-shrink: 0;
+}
+
+.single-post {
+    background-color: #7EA8BE;
+    color: #F6F0ED;
+    font-family: Lora, sans-serif;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.single-post>* {
+    flex-shrink: 0;
+}
