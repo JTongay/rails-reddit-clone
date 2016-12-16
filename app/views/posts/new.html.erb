@@ -1,9 +1,26 @@
-<%=form_for @post do |f| %>
-  <%=f.label :title %>
-  <%=f.text_field :title %>
-  <%=f.label :image %>
-  <%=f.text_field :image %>
-  <%=f.label :body %>
-  <%=f.text_field :body %>
-  <%=f.submit "Create" %>
-<% end %>
+<div class="edit-page">
+    <div class="container">
+        <h1 class="text-center">Contribute to the front page! <small>Stop lurking....</small></h1>
+        <div class="form-horizontal">
+          <%=form_for @post do |f| %>
+            <div class="form-group">
+                <%= f.label :image%>
+                <%= f.text_field :image, :class => 'form-control', :required => true%>
+            </div>
+            <div class="form-group">
+                <%= f.label :title %>
+                <%= f.text_field :title, :class => 'form-control' %>
+            </div>
+            <div class="form-group">
+                <%= f.label :body %>
+                <%= f.text_field :body, :class => 'form-control'  %>
+            </div>
+            <div class="form-group">
+                <%= f.submit "Edit Post", :class => 'btn btn-primary pull-right'%>
+            </div>
+            <% end %>
+        </div>
+
+    </div>
+
+</div>
