@@ -24,6 +24,12 @@ body>* {
     flex_shrink: 0;
 }
 
+.user-page {
+    background-color: #C2948A;
+    font-family: Lora, sans-serif;
+    flex-grow: 1;
+}
+
 
 /*sign in page*/
 
@@ -68,18 +74,6 @@ body>* {
 }
 
 .edit-page>* {
-    flex-shrink: 0;
-}
-
-.user-page {
-    background-color: #BBB193;
-    font-family: Lora, sans-serif;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.user-page>* {
     flex-shrink: 0;
 }
 
