@@ -8,7 +8,7 @@ group :production do
   gem 'pg'
 end
 gem 'rails_12factor', group: :production
-gem 'coffee-script-source', '1.12.1', group: :production
+gem 'coffee-script-source', '1.8.0', group: :production
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
